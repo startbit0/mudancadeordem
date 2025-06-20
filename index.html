@@ -27,7 +27,7 @@
         /* Header */
         .header {
             background: rgba(0,0,0,0.9);
-            padding: 20px 0;
+            padding: 15px 0; /* Ajustei o padding para acomodar a altura do logo */
             position: sticky;
             top: 0;
             z-index: 100;
@@ -40,14 +40,11 @@
             align-items: center;
         }
 
-        .logo {
-            color: #dc2626;
-            font-size: 24px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        .logo-img {
+            height: 50px; /* Altura do logo. Você pode ajustar se achar necessário */
+            width: auto;   /* Largura automática para manter a proporção */
         }
-
+        
         .urgent-badge {
             background: #dc2626;
             color: white;
@@ -132,8 +129,8 @@
         .book-cover {
             width: 280px;
             height: 400px;
-            /* Lembre-se de substituir 'capa-livro.png' pelo URL real da imagem */
-            background-image: url('capa-livro.png'); 
+            /* Lembre-se de substituir 'capa-livro.jpg' pelo URL real da imagem */
+            background-image: url('capa-livro.jpg'); 
             background-color: #333; /* Cor de fundo caso a imagem não carregue */
             background-size: cover;
             background-position: center;
@@ -329,7 +326,9 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">Mudança de Ordem</div>
+                <div class="logo">
+                    <img src="logo 2 transparente (1).png" alt="Logo Mudança de Ordem" class="logo-img">
+                </div>
                 <div class="urgent-badge">Dossiê Confidencial</div>
             </div>
         </div>
