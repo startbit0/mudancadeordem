@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como o Crime e a Política se Fundiram no Brasil - O Dossiê que Eles Não Querem que Você Leia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(0,0,0,0.9);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #dc2626;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .urgent-badge {
+            background: #dc2626;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><defs><pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23smallGrid)"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .warning-banner {
+            background: rgba(220, 38, 38, 0.2);
+            border: 2px solid #dc2626;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            color: #ffcccc;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px rgba(220, 38, 38, 0.5); }
+            to { box-shadow: 0 0 20px rgba(220, 38, 38, 0.8); }
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 56px);
+            margin-bottom: 20px;
+            color: #dc2626;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            margin-bottom: 30px;
+            color: #f3f4f6;
+            font-style: italic;
+        }
+
+        .hero .description {
+            font-size: clamp(16px, 2.5vw, 20px);
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #d1d5db;
+        }
+
+        /* Book Preview */
+        .book-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .book-cover {
+            width: 250px;
+            height: 350px;
+            background: linear-gradient(145deg, #1f2937, #374151);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            transform: perspective(1000px) rotateY(-15deg);
+            transition: transform 0.3s ease;
+        }
+
+        .book-cover:hover {
+            transform: perspective(1000px) rotateY(0deg) scale(1.05);
+        }
+
+        .book-cover h3 {
+            color: #dc2626;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .book-cover p {
+            color: #f9fafb;
+            font-size: 14px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Secrets Section */
+        .secrets {
+            background: rgba(220, 38, 38, 0.1);
+            padding: 80px 0;
+            color: white;
+        }
+
+        .secrets h2 {
+            text-align: center;
+            font-size: clamp(28px, 5vw, 42px);
+            margin-bottom: 50px;
+            color: #dc2626;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .secrets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .secret-item {
+            background: rgba(0,0,0,0.6);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #dc2626;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .secret-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .secret-item h3 {
+            color: #dc2626;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .secret-item p {
+            color: #d1d5db;
+            font-size: 16px;
+        }
+
+        /* Testimonial */
+        .testimonial {
+            background: rgba(0,0,0,0.8);
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .testimonial blockquote {
+            font-size: clamp(18px, 3vw, 24px);
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #f3f4f6;
+        }
+
+        .testimonial cite {
+            color: #dc2626;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(28px, 5vw, 42px);
+            margin-bottom: 30px;
+        }
+
+        .price-container {
+            margin: 40px 0;
+        }
+
+        .old-price {
+            font-size: 24px;
+            text-decoration: line-through;
+            color: rgba(255,255,255,0.6);
+            margin-right: 15px;
+        }
+
+        .new-price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #fef3c7;
+        }
+
+        .bonus-text {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-size: 18px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #fbbf24;
+            color: #1f2937;
+            padding: 20px 40px;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+
+        .cta-button:hover {
+            background: #f59e0b;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .guarantee {
+            margin-top: 40px;
+            font-size: 16px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .guarantee strong {
+            color: #fbbf24;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            padding: 40px 0;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .book-preview {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .book-cover {
+                width: 200px;
+                height: 280px;
+                transform: none;
+            }
+
+            .secrets-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Mudança de Ordem</div>
+                <div class="urgent-badge">Dossiê Confidencial</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="warning-banner">
+                🚨 ATENÇÃO: Este conteúdo pode ser considerado "perigoso" pelas elites políticas
+            </div>
+            
+            <h1>Como o Crime e a Política se Fundiram no Brasil</h1>
+            <p class="subtitle">Assassinatos, Infiltrações e a Captura Silenciosa do Estado</p>
+            
+            <p class="description">
+                <strong>O dossiê que conecta todos os pontos</strong> que a história oficial insiste em manter separados. 
+                Do assassinato de Celso Daniel ao Petrolão, do Foro de São Paulo às facções criminosas - 
+                pela primeira vez, toda a verdade em um lugar.
+            </p>
+
+            <div class="book-preview">
+                <div class="book-cover">
+                    <h3>Como o Crime e a Política se Fundiram no Brasil</h3>
+                    <p>O thriller político que revela a máquina de captura do Estado brasileiro</p>
+                </div>
+                <div style="max-width: 400px; text-align: left;">
+                    <h3 style="color: #dc2626; margin-bottom: 20px; font-size: 24px;">📋 O QUE VOCÊ VAI DESCOBRIR:</h3>
+                    <ul style="color: #f3f4f6; font-size: 18px; list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;">🎯 A verdade sobre o assassinato de Celso Daniel</li>
+                        <li style="margin-bottom: 10px;">🕵️ Como o Foro de São Paulo realmente opera</li>
+                        <li style="margin-bottom: 10px;">💀 A "queima de arquivo" sistemática de testemunhas</li>
+                        <li style="margin-bottom: 10px;">🏛️ A instrumentalização do Estado brasileiro</li>
+                        <li style="margin-bottom: 10px;">🔥 A guerra cultural que você não viu</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secrets Revealed -->
+    <section class="secrets">
+        <div class="container">
+            <h2>Os Segredos que Eles Não Querem que Você Saiba</h2>
+            
+            <div class="secrets-grid">
+                <div class="secret-item">
+                    <h3>🔴 O Caso Celso Daniel</h3>
+                    <p>Não foi um sequestro comum. Foi um crime político para proteger um esquema de financiamento ilícito que chegava ao alto escalão do PT. Descubra como as testemunhas foram sistematicamente eliminadas.</p>
+                </div>
+                
+                <div class="secret-item">
+                    <h3>🌎 O Foro de São Paulo</h3>
+                    <p>Muito além de um "fórum de debates". Uma organização de coordenação estratégica com poder deliberativo, incluindo alianças secretas com as FARC e o narcotráfico internacional.</p>
+                </div>
+                
+                <div class="secret-item">
+                    <h3>⚖️ A Captura do Estado</h3>
+                    <p>Como a Polícia Federal, o BNDES e até o STF foram transformados em ferramentas para perseguir adversários e proteger aliados de um projeto de poder específico.</p>
+                </div>
+                
+                <div class="secret-item">
+                    <h3>🎭 A Guerra Cultural</h3>
+                    <p>A estratégia gramsciana que venceu durante a ditadura militar, criando o ambiente perfeito para a inversão de valores e a idealização do crime organizado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="container">
+            <blockquote>
+                "Finalmente alguém teve a coragem de conectar todos os pontos. Este livro é o que eu estava procurando há anos - a verdade completa, não os pedaços que a grande mídia nos entrega."
+            </blockquote>
+            <cite>— Seguidor do Canal Mudança de Ordem</cite>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>🚨 Acesso Imediato ao Dossiê Completo</h2>
+            
+            <div class="price-container">
+                <span class="old-price">R$ 39,90</span>
+                <span class="new-price">R$ 19,90</span>
+            </div>
+            
+            <div class="bonus-text">
+                <strong>🔥 OFERTA ESPECIAL:</strong><br>
+                Preço promocional por tempo limitado!<br>
+                <em>Acesso imediato ao dossiê completo em PDF</em>
+            </div>
+            
+            <a href="#" class="cta-button" onclick="window.open('https://pay.hotmart.com/Y68932646C', '_blank')">
+                🔥 Garantir Minha Cópia por R$ 19,90
+            </a>
+            
+            <div class="guarantee">
+                <strong>✅ GARANTIA DE 7 DIAS</strong><br>
+                Se não ficar 100% satisfeito, devolvemos seu dinheiro sem perguntas.
+            </div>
+            
+            <div style="margin-top: 30px; font-size: 14px; color: rgba(255,255,255,0.7);">
+                ⏰ Esta oferta pode ser retirada do ar a qualquer momento por pressão de terceiros
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Mudança de Ordem. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px; font-size: 12px;">
+                Este material é destinado apenas para fins educacionais e informativos.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Efeito de parallax simples no hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+    </script>
+</body>
+</html>
