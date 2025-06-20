@@ -132,7 +132,7 @@
         .book-cover {
             width: 280px;
             height: 400px;
-            background-image: url('capa-livro.png');
+            background-image: url('./capa-livro.png');
             background-size: cover;
             background-position: center;
             border-radius: 15px;
@@ -140,6 +140,28 @@
             transform: perspective(1000px) rotateY(-15deg);
             transition: transform 0.3s ease;
             border: 3px solid #dc2626;
+            /* Fallback se a imagem não carregar */
+            background-color: #1f2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #dc2626;
+            font-weight: bold;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .book-cover::before {
+            content: "COMO O CRIME E A POLÍTICA SE FUNDIRAM NO BRASIL";
+            display: block;
+            padding: 20px;
+            line-height: 1.3;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .book-cover:not([style*="background-image"])::before {
+            opacity: 1;
         }
 
         .book-cover:hover {
@@ -450,18 +472,45 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
-        // Efeito de parallax simples no hero
-        window.addEventListener('scroll', () => {
+        // Efeito de parallax simples no hero (otimizado para GitHub Pages)
+        let ticking = false;
+        function updateParallax() {
             const scrolled = window.pageYOffset;
             const parallax = document.querySelector('.hero');
-            const speed = scrolled * 0.5;
-            parallax.style.transform = `translateY(${speed}px)`;
+            if (parallax) {
+                const speed = scrolled * 0.3; // Reduzido para melhor performance
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        });
+
+        // Verificar se a imagem da capa carregou
+        window.addEventListener('load', function() {
+            const bookCover = document.querySelector('.book-cover');
+            const img = new Image();
+            img.onload = function() {
+                bookCover.style.backgroundImage = `url('./capa-livro.png')`;
+            };
+            img.onerror = function() {
+                console.log('Imagem da capa não encontrada. Usando placeholder.');
+            };
+            img.src = './capa-livro.png';
         });
     </script>
 </body>
