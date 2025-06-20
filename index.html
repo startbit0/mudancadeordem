@@ -41,20 +41,11 @@
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
             color: #dc2626;
             font-size: 24px;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
-        }
-
-        .logo img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
         }
 
         .urgent-badge {
@@ -131,41 +122,19 @@
         /* Book Preview */
         .book-preview {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
             gap: 40px;
             margin: 50px 0;
             flex-wrap: wrap;
         }
 
-        .book-info {
-            max-width: 400px;
-            text-align: left;
-            align-self: center;
-        }
-
-        .book-info h3 {
-            color: #dc2626;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
-        .book-info ul {
-            color: #f3f4f6;
-            font-size: 18px;
-            list-style: none;
-            padding: 0;
-        }
-
-        .book-info li {
-            margin-bottom: 10px;
-            padding-left: 0;
-        }
-
         .book-cover {
             width: 280px;
             height: 400px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #333 50%, #1a1a1a 100%);
+            /* Lembre-se de substituir 'capa-livro.jpg' pelo URL real da imagem */
+            background-image: url('capa-livro.jpg'); 
+            background-color: #333; /* Cor de fundo caso a imagem não carregue */
             background-size: cover;
             background-position: center;
             border-radius: 15px;
@@ -173,57 +142,6 @@
             transform: perspective(1000px) rotateY(-15deg);
             transition: transform 0.3s ease;
             border: 3px solid #dc2626;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 20px;
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .book-cover::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at center, rgba(220,38,38,0.1) 0%, rgba(0,0,0,0.3) 100%);
-            z-index: 1;
-        }
-
-        .book-cover-content {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .book-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #dc2626;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .book-subtitle {
-            font-size: 14px;
-            color: #f3f4f6;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .book-author {
-            font-size: 16px;
-            color: #fbbf24;
-            font-weight: bold;
-            margin-top: auto;
         }
 
         .book-cover:hover {
@@ -387,19 +305,13 @@
         @media (max-width: 768px) {
             .book-preview {
                 flex-direction: column;
-                gap: 30px;
-                align-items: center;
+                gap: 20px;
             }
 
             .book-cover {
                 width: 220px;
                 height: 320px;
                 transform: none;
-            }
-
-            .book-info {
-                text-align: center;
-                max-width: 100%;
             }
 
             .secrets-grid {
@@ -409,15 +321,6 @@
             .hero {
                 padding: 40px 0;
             }
-
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .logo {
-                font-size: 20px;
-            }
         }
     </style>
 </head>
@@ -426,10 +329,7 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQ1IiBzdHJva2U9IiNkYzI2MjYiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIvPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIzNSIgc3Ryb2tlPSIjZGMyNjI2IiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMjUiIHN0cm9rZT0iI2RjMjYyNiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjE1IiBzdHJva2U9IiNkYzI2MjYiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI4IiBmaWxsPSIjZGMyNjI2Ii8+CjxsaW5lIHgxPSI1MCIgeTE9IjUiIHgyPSI1MCIgeTI9IjI1IiBzdHJva2U9IiNkYzI2MjYiIHN0cm9rZS13aWR0aD0iMyIvPgo8bGluZSB4MT0iNTAiIHkxPSI3NSIgeDI9IjUwIiB5Mj0iOTUiIHN0cm9rZT0iI2RjMjYyNiIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxsaW5lIHgxPSI1IiB5MT0iNTAiIHgyPSIyNSIgeTI9IjUwIiBzdHJva2U9IiNkYzI2MjYiIHN0cm9rZS13aWR0aD0iMyIvPgo8bGluZSB4MT0iNzUiIHkxPSI1MCIgeDI9Ijk1IiB5Mj0iNTAiIHN0cm9rZT0iI2RjMjYyNiIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjwvc3ZnPgo=" alt="Mudança de Ordem Logo">
-                    Mudança de Ordem
-                </div>
+                <div class="logo">Mudança de Ordem</div>
                 <div class="urgent-badge">Dossiê Confidencial</div>
             </div>
         </div>
@@ -452,23 +352,15 @@
             </p>
 
             <div class="book-preview">
-                <div class="book-cover">
-                    <div class="book-cover-content">
-                        <div>
-                            <div class="book-title">Como o Crime e a Política se Fundiram no Brasil</div>
-                            <div class="book-subtitle">O Dossiê Proibido</div>
-                        </div>
-                        <div class="book-author">Mudança de Ordem</div>
-                    </div>
-                </div>
-                <div class="book-info">
-                    <h3>📋 O QUE VOCÊ VAI DESCOBRIR:</h3>
-                    <ul>
-                        <li>🎯 A verdade sobre o assassinato de Celso Daniel</li>
-                        <li>🕵️ Como o Foro de São Paulo realmente opera</li>
-                        <li>💀 A "queima de arquivo" sistemática de testemunhas</li>
-                        <li>🏛️ A instrumentalização do Estado brasileiro</li>
-                        <li>🔥 A guerra cultural que você não viu</li>
+                <div class="book-cover"></div>
+                <div style="max-width: 400px; text-align: left;">
+                    <h3 style="color: #dc2626; margin-bottom: 20px; font-size: 24px;">📋 O QUE VOCÊ VAI DESCOBRIR:</h3>
+                    <ul style="color: #f3f4f6; font-size: 18px; list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;">🎯 A verdade sobre o assassinato de Celso Daniel</li>
+                        <li style="margin-bottom: 10px;">🕵️ Como o Foro de São Paulo realmente opera</li>
+                        <li style="margin-bottom: 10px;">💀 A "queima de arquivo" sistemática de testemunhas</li>
+                        <li style="margin-bottom: 10px;">🏛️ A instrumentalização do Estado brasileiro</li>
+                        <li style="margin-bottom: 10px;">🔥 A guerra cultural que você não viu</li>
                     </ul>
                 </div>
             </div>
@@ -530,7 +422,7 @@
                 <em>Acesso imediato ao dossiê completo em PDF</em>
             </div>
             
-            <a href="#" class="cta-button" onclick="window.open('https://pay.hotmart.com/I100254239S', '_blank')">
+            <a href="https://pay.hotmart.com/I100254239S" target="_blank" class="cta-button">
                 🔥 Garantir Minha Cópia por R$ 19,90
             </a>
             
@@ -548,7 +440,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Mudança de Ordem. Todos os direitos reservados.</p>
+            <p>© 2025 Mudança de Ordem. Todos os direitos reservados.</p>
             <p style="margin-top: 10px; font-size: 12px;">
                 Este material é destinado apenas para fins educacionais e informativos.
             </p>
@@ -568,10 +460,12 @@
 
         // Efeito de parallax simples no hero
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
             const parallax = document.querySelector('.hero');
-            const speed = scrolled * 0.5;
-            parallax.style.transform = `translateY(${speed}px)`;
+            if (parallax) {
+                const scrolled = window.pageYOffset;
+                const speed = scrolled * 0.3; /* Diminui a velocidade do parallax */
+                parallax.style.backgroundPositionY = `${speed}px`;
+            }
         });
     </script>
 </body>
